@@ -1,2 +1,137 @@
-# Boots-DZ
-Site de vente de boots en Algerie avec commande en ligne
+
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Bottes-DZ | Boutique en Algérie</title>
+<style>
+*{box-sizing:border-box}
+body{margin:0;font-family:Arial,sans-serif;background:#f5f5f5;color:#171717}
+header{background:#111;color:white;text-align:center;padding:22px 12px}
+header h1{margin:0;font-size:30px;letter-spacing:2px}
+header p{margin:8px 0 0;color:#ddd}
+main{max-width:850px;margin:auto;padding:18px}
+.hero{background:#e9e3da;padding:24px 15px;text-align:center;border-radius:14px;margin-bottom:20px}
+.hero h2{font-size:25px;margin:0 0 10px}
+.hero p{margin:0;color:#444}
+.products{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px}
+.product{background:white;border-radius:12px;overflow:hidden;box-shadow:0 2px 8px #0001}
+.product img{width:100%;height:190px;object-fit:cover;background:#eee}
+.details{padding:12px}
+.details h3{margin:0 0 8px;font-size:17px}
+.price{font-size:21px;font-weight:bold;color:#a04425}
+.old{font-size:13px;color:#777;text-decoration:line-through}
+button{border:0;border-radius:8px;padding:13px;font-weight:bold;cursor:pointer}
+.order{background:#171717;color:white;width:100%;margin-top:10px}
+form{background:white;padding:18px;border-radius:12px;margin-top:22px}
+form h2{margin-top:0}
+label{display:block;margin-top:12px;font-weight:bold;font-size:14px}
+input,select,textarea{width:100%;padding:12px;margin-top:6px;border:1px solid #ccc;border-radius:7px;font-size:16px}
+.submit{background:#168448;color:white;width:100%;margin-top:18px;font-size:16px}
+.note{font-size:12px;color:#666;line-height:1.5}
+footer{text-align:center;padding:24px;color:#666;font-size:13px}
+@media(min-width:600px){.product img{height:260px}}
+</style>
+</head>
+<body>
+<header>
+<h1>BOTTES-DZ</h1>
+<p>Votre style, votre choix 🇩🇿</p>
+</header>
+<main>
+<section class="hero">
+<h2>🔥 Découvrez notre collection</h2>
+<p>Commandez facilement partout en Algérie.</p>
+</section>
+
+<section class="products">
+<article class="product">
+<img src="https://images.unsplash.com/photo-1543163521-1bf539c55dd2?auto=format&fit=crop&w=600&q=80" alt="Chaussures femme">
+<div class="details">
+<h3>Boots Collection 01</h3>
+<div class="price">2 500 DA</div>
+<div class="old">Ancien prix : 3 000 DA</div>
+<button class="order" onclick="choose('Boots Collection 01',2500)">Commander</button>
+</div>
+</article>
+<article class="product">
+<img src="https://images.unsplash.com/photo-1608256246200-53e635b5b65f?auto=format&fit=crop&w=600&q=80" alt="Bottes">
+<div class="details">
+<h3>Boots Collection 02</h3>
+<div class="price">2 500 DA</div>
+<div class="old">Ancien prix : 3 000 DA</div>
+<button class="order" onclick="choose('Boots Collection 02',2500)">Commander</button>
+</div>
+</article>
+</section>
+
+<form id="orderForm">
+<h2>📦 Passer commande</h2>
+<p id="selected">Choisissez votre modèle ci-dessus.</p>
+<input type="hidden" name="Modèle" id="model">
+<input type="hidden" name="Prix" id="price">
+<label>Nom et prénom *</label>
+<input name="Nom" required placeholder="Votre nom complet">
+<label>Téléphone *</label>
+<input name="Téléphone" required type="tel" placeholder="05 / 06 / 07..." pattern="[0-9 +()-]{9,15}">
+<label>Wilaya *</label>
+<select name="Wilaya" required>
+<option value="">Choisissez votre wilaya</option>
+<option>Adrar</option><option>Chlef</option><option>Laghouat</option>
+<option>Oum El Bouaghi</option><option>Batna</option><option>Béjaïa</option>
+<option>Biskra</option><option>Béchar</option><option>Blida</option>
+<option>Bouira</option><option>Tamanrasset</option><option>Tébessa</option>
+<option>Tlemcen</option><option>Tiaret</option><option>Tizi Ouzou</option>
+<option>Alger</option><option>Djelfa</option><option>Jijel</option>
+<option>Sétif</option><option>Saïda</option><option>Skikda</option>
+<option>Sidi Bel Abbès</option><option>Annaba</option><option>Guelma</option>
+<option>Constantine</option><option>Médéa</option><option>Mostaganem</option>
+<option>M'Sila</option><option>Mascara</option><option>Ouargla</option>
+<option>Oran</option><option>El Bayadh</option><option>Illizi</option>
+<option>Bordj Bou Arréridj</option><option>Boumerdès</option><option>El Tarf</option>
+<option>Tindouf</option><option>Tissemsilt</option><option>El Oued</option>
+<option>Khenchela</option><option>Souk Ahras</option><option>Tipaza</option>
+<option>Mila</option><option>Aïn Defla</option><option>Naâma</option>
+<option>Aïn Témouchent</option><option>Ghardaïa</option><option>Relizane</option>
+</select>
+<label>Adresse de livraison *</label>
+<input name="Adresse" required placeholder="Commune, quartier, adresse...">
+<label>Pointure *</label>
+<select name="Pointure" required>
+<option value="">Choisissez votre pointure</option>
+<option>36</option><option>37</option><option>38</option>
+<option>39</option><option>40</option><option>41</option>
+<option>42</option><option>43</option><option>44</option><option>45</option>
+</select>
+<label>Quantité</label>
+<select name="Quantité"><option>1</option><option>2</option><option>3</option></select>
+<label>Remarque (facultatif)</label>
+<textarea name="Remarque" rows="2" placeholder="Informations complémentaires"></textarea>
+<button class="submit" type="submit">Envoyer ma commande</button>
+<p class="note">Vérifiez vos coordonnées avant l'envoi. Le prix de livraison sera à confirmer.</p>
+</form>
+</main>
+<footer>© 2026 Bottes-DZ · Boutique en Algérie</footer>
+<script>
+function choose(model,price){
+document.getElementById('model').value=model;
+document.getElementById('price').value=price+' DA';
+document.getElementById('selected').textContent='Modèle choisi : '+model+' — '+price+' DA';
+document.getElementById('orderForm').scrollIntoView({behavior:'smooth'});
+}
+document.getElementById('orderForm').addEventListener('submit',function(e){
+e.preventDefault();
+const data=new FormData(this);
+let message='Bonjour, je souhaite commander sur Bottes-DZ :\n';
+for(const [key,value] of data.entries()){
+if(value) message+=key+' : '+value+'\n';
+}
+const phone=''; 
+if(!phone){alert('Le formulaire est prêt, mais le numéro WhatsApp du vendeur doit être configuré pour recevoir les commandes. Contactez le vendeur pour finaliser la commande.');return;}
+window.open('https://wa.me/'+phone+'?text='+encodeURIComponent(message),'_blank');
+});
+</script>
+</body>
+</html>
+
